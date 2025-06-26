@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import profileImage from '@/assets/portfolio.png';
-import portfolioPDF from '@/assets/Porfolio.pdf'; 
+import portfolioPDF from '@/assets/Porfolio.pdf';
 </script>
 
 <template>
@@ -42,7 +42,7 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
           <RouterLink to="/portfolio" class="btn btn-primary">
             <span class="mr-2">📁</span>View My Work
           </RouterLink>
-          <a href="/assets/Portfolio.pdf" download class="btn btn-secondary">
+          <a :href="portfolioPDF" download="Chhea_Resume.pdf" class="btn btn-secondary">
             <span class="mr-2">📄</span>Download Resume
           </a>
         </div>
@@ -52,17 +52,16 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
 </template>
 
 <style scoped>
+/* Your existing styles remain unchanged */
 @keyframes circleMove1 {
   0% {
     transform: translate(-20%, -20%) scale(1);
     opacity: 0.2;
   }
-
   50% {
     transform: translate(20%, 20%) scale(1.2);
     opacity: 0.4;
   }
-
   100% {
     transform: translate(-20%, -20%) scale(1);
     opacity: 0.2;
@@ -74,12 +73,10 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
     transform: translate(20%, 20%) scale(1);
     opacity: 0.2;
   }
-
   50% {
     transform: translate(-20%, -20%) scale(1.3);
     opacity: 0.5;
   }
-
   100% {
     transform: translate(20%, 20%) scale(1);
     opacity: 0.2;
@@ -91,12 +88,10 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
     transform: translate(-30%, 30%) scale(1);
     opacity: 0.2;
   }
-
   50% {
     transform: translate(30%, -30%) scale(1.1);
     opacity: 0.3;
   }
-
   100% {
     transform: translate(-30%, 30%) scale(1);
     opacity: 0.2;
@@ -108,12 +103,10 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
     transform: translate(30%, -30%) scale(1);
     opacity: 0.2;
   }
-
   50% {
     transform: translate(-30%, 30%) scale(1.2);
     opacity: 0.4;
   }
-
   100% {
     transform: translate(30%, -30%) scale(1);
     opacity: 0.2;
@@ -196,7 +189,6 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
   from {
     width: 0;
   }
-
   to {
     width: 100%;
   }
@@ -214,7 +206,6 @@ import portfolioPDF from '@/assets/Porfolio.pdf';
   50% {
     border-right-color: #fff;
   }
-
   100% {
     border-right-color: transparent;
   }

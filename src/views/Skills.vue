@@ -1,86 +1,128 @@
+<script setup>
+import skill1 from '@/assets/image1.png';
+import skill2 from '@/assets/image2.png';
+import skill3 from '@/assets/image3.png';
+import skill4 from '@/assets/image4.png';
+import skill5 from '@/assets/image5.png';
+import skill6 from '@/assets/image6.png';
+import skill7 from '@/assets/image7.png';
+import skill8 from '@/assets/image8.png';
+import skill9 from '@/assets/image9.png';
+import skill10 from '@/assets/image10.png';
+import skill11 from '@/assets/image11.png';
+import skill12 from '@/assets/image12.png';
+import skill13 from '@/assets/image13.png';
+import skill14 from '@/assets/image14.png';
+import skill15 from '@/assets/image15.png';
+import skill16 from '@/assets/image16.png';
+import skill17 from '@/assets/image17.png';
+import skill18 from '@/assets/image18.png';
+import skill19 from '@/assets/image19.png';
+import skill20 from '@/assets/image20.png';
+
+const skills = [
+  skill1, skill2, skill3, skill4, skill5,
+  skill6, skill7, skill8, skill9, skill10,
+  skill11, skill12, skill13, skill14, skill15,
+  skill16, skill17, skill18, skill19, skill20
+];
+</script>
+
 <template>
-  <section class="container mx-auto px-4 py-16 bg-gradient-to-b from-gray-50 to-white">
-    <h2 class="text-4xl font-extrabold text-gray-800 mb-6 animate-fade-in">Skills & Technologies</h2>
-    <p class="text-lg text-gray-600 mb-8 animate-fade-in delay-100">Here are the technologies I work with to bring ideas to life</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div v-for="(techs, category) in skills" :key="category" class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-fade-in-up">
-        <h3 :data-icon="getIcon(category)" class="text-xl font-semibold text-blue-600 flex items-center mb-4">
-          {{ category }}
-        </h3>
-        <ul class="space-y-2">
-          <li v-for="tech in filterLanguages(techs)" :key="tech" class="flex items-center bg-gradient-to-r from-blue-50 to-white text-gray-700 px-4 py-2 rounded-full animate-fade-in-right delay-200">
-            <span class="text-green-500 mr-2">✔</span>
-            {{ tech }}
-          </li>
-        </ul>
+  <section class="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center relative overflow-hidden">
+    <!-- Title -->
+    <h1 class="mt-8 text-2xl font-semibold z-10">Technologies and Tools:</h1>
+
+    <!-- Skill Icons Grid -->
+    <div class="grid grid-cols-5 gap-6 p-8 max-w-4xl z-10">
+      <div v-for="(skill, index) in skills" :key="index" class="flex items-center justify-center">
+        <div class="border-4 border-gradient rounded-xl p-2 transition-all duration-300 hover:scale-110">
+          <img :src="skill" alt="Skill Icon" class="icon-size object-contain glow-effect" />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const skills = {
-  Frontend: ['HTML', 'CSS', 'SASS', 'Bootstrap', 'Tailwind CSS', 'JavaScript', 'Vue.js'],
-  Backend: ['PHP (MVC)', 'MySQL', 'Laravel', 'Node.js', 'Firebase'],
-  'Tools & DevOps': ['Git', 'GitHub', 'Jira', 'AWS EC2', 'Linux', 'Postman', 'Figma', 'Lucidchart', 'Netlify/Vercel'],
-  'Programming & Analytics': ['Python', 'TypeScript', 'Data Analytics', 'Power BI', 'Algorithm Design'],
-};
-
-const showLanguages = ref(false);
-
-const getIcon = (category) => {
-  const icons = {
-    Frontend: '',
-    Backend: '',
-    'Tools & DevOps': '',
-    'Programming & Analytics': ''
-  };
-  return icons[category] || '';
-};
-
-const filterLanguages = (techs) => {
-  if (!showLanguages.value) return techs;
-  return techs.filter(tech => ['Python', 'JavaScript', 'TypeScript', 'PHP (MVC)'].includes(tech));
-};
-</script>
-
 <style scoped>
-h3::before {
-  content: attr(data-icon);
-  margin-right: 0.5rem;
-  font-size: 1.25rem;
+/* Custom icon size */
+.icon-size {
+  width: 6rem;  /* 96px */
+  height: 6rem;
 }
 
-/* Custom animations */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in;
-}
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-in;
-}
-.animate-fade-in-right {
-  animation: fadeInRight 0.7s ease-in;
-}
-.animate-bounce {
-  animation: bounce 1s infinite;
+@media (max-width: 640px) {
+  .icon-size {
+    width: 4.5rem; /* 72px */
+    height: 4.5rem;
+  }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Glowing Effect for Icons */
+.glow-effect {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  transition: filter 0.3s ease;
 }
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+
+.glow-effect:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
 }
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+
+/* Custom Gradient Border */
+.border-gradient {
+  border-image: linear-gradient(45deg, #6B46C1, #ED64A6, #FDBA74) 1;
+  animation: borderGlow 4s infinite alternate;
 }
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+
+/* Border Glow Animation */
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(107, 70, 193, 0.5), 0 0 10px rgba(237, 100, 166, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(107, 70, 193, 0.8), 0 0 15px rgba(237, 100, 166, 0.6);
+  }
+}
+
+/* Background Animations */
+.bg-gray-900::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  animation: float 15s infinite ease-in-out;
+  top: -100px;
+  left: -100px;
+}
+
+.bg-gray-900::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 165, 0, 0.1) 0%, transparent 70%);
+  animation: float 12s infinite ease-in-out reverse;
+  bottom: -75px;
+  right: -75px;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Responsive Grid Columns */
+@media (max-width: 1024px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 </style>
